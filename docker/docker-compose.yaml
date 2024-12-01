@@ -448,7 +448,7 @@ services:
 
   # The nginx reverse proxy.
   # used for reverse proxying the API service and Web service.
-  nginx:
+  dify-nginx:
     image: nginx:latest
     restart: always
     volumes:
@@ -490,6 +490,8 @@ services:
     ports:
       - '${EXPOSE_NGINX_PORT:-80}:${NGINX_PORT:-80}'
       - '${EXPOSE_NGINX_SSL_PORT:-443}:${NGINX_SSL_PORT:-443}'
+    networks:
+      - viconsol-shared
 
   # The Weaviate vector store.
   weaviate:
@@ -844,6 +846,8 @@ networks:
   opensearch-net:
     driver: bridge
     internal: true
+  viconsol-shared:
+    external: true
 
 volumes:
   oradata:
