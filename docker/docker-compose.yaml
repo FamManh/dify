@@ -492,6 +492,7 @@ services:
       - '${EXPOSE_NGINX_SSL_PORT:-443}:${NGINX_SSL_PORT:-443}'
     networks:
       - viconsol-shared
+      - default
 
   # The Weaviate vector store.
   weaviate:
